@@ -10,4 +10,10 @@ for question in question_data:
     new_question = Question(question_text, question_answer)
     question_bank.append(new_question)
 
-qb = QuizBrain()
+qb = QuizBrain(question_bank)
+
+while qb.still_has_question():
+    user_answer = qb.next_question()
+    qb.check_answer(user_answer)
+
+print(f"Your score is {qb.score}")
